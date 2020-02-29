@@ -4,7 +4,7 @@ Project:       htb2020-memebot
 File Created:  Saturday, 29th February 2020 7:01:39 pm
 Author(s):     Paul Martin
 
-Last Modified: Saturday, 29th February 2020 8:46:59 pm
+Last Modified: Saturday, 29th February 2020 9:02:26 pm
 Modified By:   Paul Martin
 '''
 
@@ -23,12 +23,12 @@ user_agent = 'Wholesome Memepage'
 target_subreddit = 'wholesomememes'
 image_directory = './memes'
 image_count = 1
-order = 'top'
-order = order.lower()
 schedule_time = '09:00'
 
-SUBREDDIT = 'wholesomememes'
-IMG_DIR = './memes'
+order = 'top'
+time_filter = 'day' # month, hour, day, week, year, all
+
+order = order.lower()
 
 reddit = praw.Reddit(client_id=client_id,
                      client_secret=client_secret, user_agent=user_agent)
@@ -37,7 +37,7 @@ def get_subreddit(ranking):
     if ranking == 'hot':
         return reddit.subreddit(target_subreddit).hot(limit=None)
     elif ranking == 'top':
-        return reddit.subreddit(target_subreddit).top(limit=None)
+        return reddit.subreddit(target_subreddit).top(time_filter='day')
     elif ranking == 'new':
         return reddit.subreddit(target_subreddit).new(limit=None)
 
