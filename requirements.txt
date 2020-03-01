@@ -1,4 +1,8 @@
 requests
+schedule
+numpy
+scipy
 python-dotenv
 praw
-schedule
+instabot
+Pillow

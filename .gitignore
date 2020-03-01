@@ -1,7 +1,10 @@
 .vscode
 env
-memes
+__pycache__
 
 .env
 
 .DS_STORE
+
+config
+memes

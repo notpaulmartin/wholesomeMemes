@@ -1,19 +1,21 @@
 '''
-File:          reddit_scraper.py
+File:          reddit.py
 Project:       htb2020-memebot
 File Created:  Saturday, 29th February 2020 7:01:39 pm
 Author(s):     Paul Martin
 
-Last Modified: Saturday, 29th February 2020 9:02:26 pm
+Last Modified: Sunday, 1st March 2020 2:40:45 am
 Modified By:   Paul Martin
 '''
 
-from typing import Dict, Any
+from typing import List, Dict, Any
 
 import os, json
-import praw, requests, schedule
+import praw, requests
 
 from dotenv import load_dotenv
+
+import insta
 
 load_dotenv()
 
@@ -41,13 +43,13 @@ def get_subreddit(ranking):
     elif ranking == 'new':
         return reddit.subreddit(target_subreddit).new(limit=None)
 
-def get_img(what):
-    img_name = "{}/{}".format(image_directory, what.split('/')[-1])
-    img = requests.get(what).content
+def get_img(url):
+    img_name = "{}/{}".format(image_directory, url.split('/')[-1])
+    img = requests.get(url).content
     with open(img_name, 'wb') as f:
         f.write(img)
 
-if __name__ == "__main__":
+def get_newest_memes(n:int = 1) -> List[str]:
     c = 1
     images = []
     
@@ -59,7 +61,10 @@ if __name__ == "__main__":
             if c > int(image_count):
                 break
 
-    for img in images:
-        get_img(img)
+    img_names:List[str] = []
+    for img_url in images:
+        get_img(img_url)
+        img_name = img_url.split('/')[-1]
+        img_names.append(img_name)
 
-    print('Done')
+    return img_names
