@@ -4,7 +4,7 @@ Project:       htb2020-memebot
 File Created:  Sunday, 1st March 2020 1:00:07 am
 Author(s):     Paul Martin
 
-Last Modified: Sunday, 1st March 2020 4:11:55 am
+Last Modified: Sunday, 1st March 2020 2:15:54 pm
 Modified By:   Paul Martin
 '''
 import schedule, time
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     schedule.every().day.at("11:30").do(auto_post)
 
     while True:
-        schedule.run_all()
+        schedule.run_pending()
         time.sleep(30)
 
     # auto_post()
