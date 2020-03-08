@@ -4,7 +4,7 @@ Project:       htb2020-memebot
 File Created:  Sunday, 8th March 2020 10:36:05 pm
 Author(s):     Paul Martin
 
-Last Modified: Sunday, 8th March 2020 10:56:46 pm
+Last Modified: Sunday, 8th March 2020 10:59:17 pm
 Modified By:   Paul Martin
 '''
 
@@ -20,7 +20,7 @@ def post():
 
 
 if __name__ == "__main__":
-    post_time = "22:57"
+    post_time = "11:30"
     schedule.every().day.at(post_time).do(post)
     print(f"** Waiting until {post_time}")
 
