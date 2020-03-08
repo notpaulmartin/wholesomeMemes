@@ -4,23 +4,25 @@ Project:       htb2020-memebot
 File Created:  Sunday, 8th March 2020 10:36:05 pm
 Author(s):     Paul Martin
 
-Last Modified: Sunday, 8th March 2020 10:39:57 pm
+Last Modified: Sunday, 8th March 2020 10:56:46 pm
 Modified By:   Paul Martin
 '''
 
-import subprocess, schedule
+import subprocess, schedule, time, random, math
 
 def post():
     # Wait another 1s - 20min until post to not get detected as bot
     delay = random.randrange(65, 60*20)
-    print(f"** Waiting for {math.floor(delay/60)}min {delay%60}s")
-    time.sleep(delay)
+    print(f"** Waiting for another {math.floor(delay/60)}min {delay%60}s")
+    #time.sleep(delay)
 
-    subprocess.call("python main.py")
+    subprocess.call(["python", "main.py"])
 
 
 if __name__ == "__main__":
-    schedule.every().day.at("11:30").do(post)
+    post_time = "22:57"
+    schedule.every().day.at(post_time).do(post)
+    print(f"** Waiting until {post_time}")
 
     while True:
         schedule.run_pending()
