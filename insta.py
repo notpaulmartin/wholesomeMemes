@@ -35,4 +35,5 @@ def upload(filename:str, caption:str=""):
     )
 
 if __name__ == "__main__":
-    upload('0mdbycr1bel21.jpg', "")
+    pass
+    # upload('0mdbycr1bel21.jpg', "")
