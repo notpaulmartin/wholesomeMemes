@@ -55,7 +55,7 @@ def get_newest_memes(n:int = 1) -> List[str]:
     
     for submission in get_subreddit(order):
         url = submission.url
-        if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
+        if url.endswith(('.jpg', '.png', '.jpeg')):
             images.append(url)
             c += 1
             if c > int(image_count):
